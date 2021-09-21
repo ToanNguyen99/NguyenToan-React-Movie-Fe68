@@ -1,37 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Carousel } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { getCarouselAction } from "redux/actions/CarouselAction";
 
 const contentStyle = {
-  height: "500px",
+  height: "100vh",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
   background: "#364d79",
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
 };
 
-export default function HomeCarousel() {
-  return (
-    <Carousel effect="fade">
-      <div>
-        <div style={contentStyle}>
-            <img src="https://picsum.photos/1000" className="w-full h-full object-contain" alt="" />
-        </div>
-      </div>
-      <div>
-        <div style={contentStyle}>2
+export default function HomeCarousel(props) {
+  const { arrImgBanner } = useSelector((state) => state.CarouselReducer);
+  
+  const dispatch = useDispatch();
+  // userEffect sẽ tự kích hoạt để load data
+    useEffect(() => {
+      dispatch(getCarouselAction())
+    }, [])
 
+  const renderImg = () => {
+    return arrImgBanner.map((item, index) => {
+      return (
+        <div>
+          <div style={{...contentStyle, backgroundImage: `url(${item.hinhAnh})`}} key={index}>
+            <img
+              src={item.hinhAnh}
+              className="w-full opacity-0"
+              alt={item.hinhAnh}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <div style={contentStyle}>3
+      );
+    });
+  };
 
-        </div>
-      </div>
-      <div>
-        <div style={contentStyle}>
-                
-        </div>
-      </div>
-    </Carousel>
-  );
+  return <Carousel effect="fade">{renderImg()}</Carousel>;
 }

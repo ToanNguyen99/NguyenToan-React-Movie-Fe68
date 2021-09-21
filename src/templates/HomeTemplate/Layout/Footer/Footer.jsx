@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer(props) {
   return (
     <footer className="text-gray-600 body-font bg-black bg-opacity-20">
-      <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+      <div className="container py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
           <a className="flex title-font font-medium items-center justify-start text-gray-900">
             <img className="w-24" src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png" alt="CGV.vn" />
