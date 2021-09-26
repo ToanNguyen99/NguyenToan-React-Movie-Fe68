@@ -1,3 +1,4 @@
+import { SET_MOVIE_DETAIL } from "redux/actions/types/CinemaType"
 import { SET_LIST_MOVIE, SET_MOVIE_COMING_SOON, SET_MOVIE_IS_PLAYING } from "redux/actions/types/FilmManagerType"
 
 const stateDefault = {
@@ -17,7 +18,8 @@ const stateDefault = {
     }, ],
     dangChieu: true,
     sapChieu: false,
-    arrFilmDefault: []
+    arrFilmDefault: [],
+    filmDetail: {}
 
 }
 export const FilmManagerReducer = (state = stateDefault, action) => {
@@ -39,6 +41,12 @@ export const FilmManagerReducer = (state = stateDefault, action) => {
             {
                 state.sapChieu = !state.sapChieu
                 state.arrFilm = state.arrFilmDefault.filter(film => film.sapChieu === state.sapChieu);
+                return {...state }
+            }
+
+        case SET_MOVIE_DETAIL:
+            {
+                state.filmDetail = action.filmDetail;
                 return {...state }
             }
 

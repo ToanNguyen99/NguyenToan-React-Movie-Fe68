@@ -1,6 +1,6 @@
 import { data } from "autoprefixer"
-import { listCinemaServices } from "services/ListCinemaServices"
-import { GET_LIST_CINEMA } from "./types/CinemaType"
+import ListCinemaServices, { listCinemaServices } from "services/ListCinemaServices"
+import { GET_LIST_CINEMA, SET_MOVIE_DETAIL } from "./types/CinemaType"
 
 export const getListCinemaAction = () => {
     return async dispatch => {
@@ -16,6 +16,24 @@ export const getListCinemaAction = () => {
             }
         } catch (errors) {
             console.log(errors)
+        }
+    }
+}
+
+export const getInfoMovieDetail = (id) => {
+    return async dispatch => {
+        {
+            try {
+                const result = await listCinemaServices.getMovieShowTimeInfo(id)
+
+                console.log('result', result)
+                dispatch({
+                    type: SET_MOVIE_DETAIL,
+                    filmDetail: result.data.content
+                })
+            } catch (errors) {
+                console.log(errors)
+            }
         }
     }
 }

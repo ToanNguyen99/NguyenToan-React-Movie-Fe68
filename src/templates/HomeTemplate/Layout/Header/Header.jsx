@@ -20,6 +20,7 @@ export default function Header(props) {
               Home
             </NavLink>
           </li>
+         
           <li className="flex">
             <NavLink to="/contact"
               className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-white"  activeClassName="border-b-2 border-white"

@@ -1,5 +1,7 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Film.scss"
+
 export default function Film(props) {
   const { film } = props;
 
@@ -11,9 +13,9 @@ export default function Film(props) {
           src={film.hinhAnh}
           alt={film.hinhAnh}
         />
-        <button className="btn-book">
+        <NavLink to={`/detail/${film.maPhim}`} className="btn-book">
           Đặt Vé
-        </button>
+        </NavLink>
       </div>
       <div className="box-info p-4">
         <h1 className="word-limit-title title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">

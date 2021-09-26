@@ -1,6 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function Footer(props) {
+
+  const {arrListCinema} = useSelector(state => state.CinemaManagerReducer)
+
   return (
     <footer className="text-gray-600 body-font bg-black bg-opacity-20">
       <div className="container py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">

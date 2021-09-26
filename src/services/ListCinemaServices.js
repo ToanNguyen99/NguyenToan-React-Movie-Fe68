@@ -7,5 +7,10 @@ export default class ListCinemaServices extends baseService {
     getListCinema = () => {
         return this.get(`/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`)
     }
+    getMovieShowTimeInfo = (maPhim) => {
+        return this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`)
+
+    }
 }
+
 export const listCinemaServices = new ListCinemaServices;

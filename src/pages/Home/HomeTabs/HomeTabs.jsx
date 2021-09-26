@@ -30,7 +30,7 @@ export default class HomeTabs extends PureComponent {
           <Tabs tabPosition={tabPosition}>
             {cinema.lstCumRap?.map((cinemaComplex, index) => {
               return (
-                <TabPane
+                <TabPane className="toantest"
                   tab={
                     <div
                       className="flex items-center"
@@ -50,36 +50,39 @@ export default class HomeTabs extends PureComponent {
                   key={index}
                 >
                   {/* load phim */}
-                  {cinemaComplex.danhSachPhim.map((movie, index) => {
-                    return (
-                      <div className="flex mb-5 border-b-2 pb-4" key={index}>
-                        <div className="movie-img flex">
-                          <img
-                            className="w-16 h-16 object-cover"
-                            src={movie.hinhAnh}
-                            alt={movie.hinhAnh}
-                          />
-                          <div className="info-movie ml-5 ">
-                             <h1 className="capitalize text-black mb-0">{movie.tenPhim}</h1>
-                             <p className="address mb-0">
-                               {cinemaComplex.diaChi}
-                             </p>
-                             <div className="timeShow grid grid-cols-7 gap-4 mt-2">
-                               {movie.lstLichChieuTheoPhim?.slice(0,14).map((timeShow, index) => {
-                                 return <NavLink to="/">
-                                   <button className="text-white px-2 py-2 bg-blue-500 hover:bg-blue-300 hover:text-black transition-all font-medium">
-                                    {moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}
+                  <div className="load-movies">
 
-                                   </button>
-                                 </NavLink>
-                               })}
-                             </div>
+                    {cinemaComplex.danhSachPhim.map((movie, index) => {
+                      return (
+                        <div className="flex mb-5 border-b-2 pb-4" key={index}>
+                          <div className="movie-img flex">
+                            <img
+                              className="w-16 h-16 object-cover"
+                              src={movie.hinhAnh}
+                              alt={movie.hinhAnh}
+                            />
+                            <div className="info-movie ml-5 ">
+                              <h1 className="capitalize text-black mb-0">{movie.tenPhim}</h1>
+                              <p className="address mb-0">
+                                {cinemaComplex.diaChi}
+                              </p>
+                              <div className="timeShow grid grid-cols-7 gap-4 mt-2">
+                                {movie.lstLichChieuTheoPhim?.slice(0,14).map((timeShow, index) => {
+                                  return <NavLink to="/" key={index}>
+                                    <button className="text-white px-2 py-2 bg-blue-500 hover:bg-blue-300 hover:text-black transition-all font-medium">
+                                      {moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}
+
+                                    </button>
+                                  </NavLink>
+                                })}
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
+                      );
                   })}
-                  {cinemaComplex.tenCumRap}
+                  </div>
+                  {/* {cinemaComplex.tenCumRap} */}
                 </TabPane>
               );
             })}

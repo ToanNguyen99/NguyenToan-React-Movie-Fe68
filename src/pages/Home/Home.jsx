@@ -7,7 +7,8 @@ import Film from "components/Film/Film";
 import MultipleRowSlick from "components/ReactSlick/MultipleRowSlick";
 import { getListFilmAction } from "redux/actions/FilmManagerAction";
 import { getListCinemaAction } from "redux/actions/CinemaManagerAction";
-
+import "./Home.scss"
+import HomeCarousel from "templates/HomeTemplate/Layout/HomeCarousel/HomeCarousel";
 
 
 export default function Home(props) {
@@ -28,19 +29,22 @@ export default function Home(props) {
   }, [])
 
   return (
-    <div className="container px-5 py-24 mx-auto">
-      
-      <section classname="home-list">
-        <MultipleRowSlick arrFilm={arrFilm}/>
-        {/* <div className="flex flex-wrap -m-4">
-          
-          {renderFilm()}
-        </div> */}
-      </section>
+    <>
+      <HomeCarousel/>
+      <div className="container px-5 py-24 mx-auto">
+        
+        <section classname="home-list">
+          <MultipleRowSlick arrFilm={arrFilm}/>
+          {/* <div className="flex flex-wrap -m-4">
+            
+            {renderFilm()}
+          </div> */}
+        </section>
 
-      <div className="tabs-content mt-10">
-        <HomeTabs arrListCinema={arrListCinema}/>
+        <div className="tabs-content mt-10">
+          <HomeTabs arrListCinema={arrListCinema}/>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
